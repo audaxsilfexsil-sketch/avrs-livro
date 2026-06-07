@@ -948,6 +948,9 @@
     background: var(--border);
     margin-top: 3rem;
   }
+  .parte-item:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
   .parte-item {
     background: var(--dark2);
     padding: 2rem 1.2rem;
@@ -978,6 +981,7 @@
 
   @media (max-width: 900px) {
     .sobre-partes { grid-template-columns: 1fr 1fr; }
+    .parte-item:last-child:nth-child(odd) { grid-column: span 2; }
     .ecossistema { padding: 5rem 1.5rem; }
   }
 

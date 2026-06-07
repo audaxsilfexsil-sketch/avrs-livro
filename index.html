@@ -897,6 +897,90 @@
     .prelancamento { padding: 5rem 1.5rem; }
     .metodo { padding: 5rem 1.5rem; }
   }
+
+  /* ── CARROSSEL ── */
+  .carrossel {
+    padding: 0;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .carrossel-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+    text-align: center;
+  }
+  .carrossel-img {
+    width: 100%;
+    max-width: 900px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+  }
+
+  /* ── ECOSSISTEMA ── */
+  .ecossistema {
+    padding: 7rem 3rem;
+    background: var(--dark2);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .ecossistema-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .ecossistema-img {
+    width: 100%;
+    max-width: 700px;
+    display: block;
+    margin: 3rem auto 0;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+  }
+
+  /* ── SOBRE APROFUNDADO ── */
+  .sobre-partes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 3rem;
+  }
+  .parte-item {
+    background: var(--dark2);
+    padding: 2rem 1.2rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .parte-item:hover { background: var(--dark3); }
+  .parte-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .parte-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold2);
+    margin-bottom: 0.6rem;
+  }
+  .parte-desc {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: rgba(245,240,232,0.5);
+  }
+
+  @media (max-width: 900px) {
+    .sobre-partes { grid-template-columns: 1fr 1fr; }
+    .ecossistema { padding: 5rem 1.5rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -932,10 +1016,16 @@
   </div>
 
   <div class="hero-badge">
-    <div class="badge-ring">
-      <span class="badge-label">Método</span>
-      <span class="badge-main">AVR–S<br>Liderança<br>Consciente</span>
-    </div>
+    <img src="https://raw.githubusercontent.com/audaxsilfexsil-sketch/avrs-livro/main/IMAGEM%20DO%20LIVRO.webp" alt="A Vida Sem Rascunho" style="width: 220px; border-radius: 4px; box-shadow: 20px 20px 50px rgba(0,0,0,0.8), 0 0 60px rgba(212,184,122,0.1); transform: rotate(2deg);">
+  </div>
+</section>
+
+
+<!-- CARROSSEL -->
+<section class="carrossel">
+  <div class="carrossel-inner">
+    <div class="section-label fade-in" style="justify-content: center; margin-bottom: 2rem;">Por que este livro existe</div>
+    <img src="https://raw.githubusercontent.com/audaxsilfexsil-sketch/avrs-livro/main/CARROCEL.webp" alt="A Vida Sem Rascunho — Por que este livro existe" class="carrossel-img fade-in" loading="lazy">
   </div>
 </section>
 
@@ -950,27 +1040,62 @@
   <div class="sobre">
     <div class="sobre-visual book-mock fade-in">
       <div class="book-glow"></div>
-      <div class="book-card">
-        <div class="book-card-ornament"></div>
-        <div class="book-card-title">A Vida<br>Sem Rascunho</div>
-        <div class="book-card-sub">Método AVR–S</div>
-        <div class="book-card-divider"></div>
-        <div class="book-card-author">André Fernandes</div>
-      </div>
+      <img src="https://raw.githubusercontent.com/audaxsilfexsil-sketch/avrs-livro/main/IMAGEM%20DO%20LIVRO.webp" alt="A Vida Sem Rascunho — André Fernandes" style="width: 100%; max-width: 420px; display: block; border-radius: 4px; box-shadow: 20px 20px 60px rgba(0,0,0,0.7), 0 0 80px rgba(212,184,122,0.08); transform: rotate(-1deg);">
     </div>
     <div class="sobre-content fade-in">
       <div class="section-label">Sobre o livro</div>
       <h2 class="section-title">Você não reage ao que acontece.<br>Reage ao que construiu sobre isso.</h2>
       <p class="section-body">
-        A maioria das metodologias de liderança ensina o que fazer. Este livro endereça uma camada anterior: quem você é no momento de decidir — o estado interno, a percepção automatizada, o filtro invisível que distorce a realidade antes de qualquer escolha.
+        Quase ninguém percebe quando deixa de escolher. A vida não muda de uma vez — ela vai sendo construída em pequenas decisões que raramente são percebidas como decisões. Você não acorda um dia e perde o controle. Vai cedendo aos poucos, respondendo sem perceber, agindo no automático.
       </p>
       <p class="section-body">
-        O método AVR–S (Atenção · Visão · Resposta · Sistema) é um sistema de consciência e decisão desenvolvido ao longo de anos de prática com líderes, equipes e organizações. Um método que funciona antes dos outros métodos.
+        Este livro não é sobre decidir melhor. É sobre enxergar o que acontece <em style="color: var(--gold2);">antes</em> da decisão existir. O método AVR–S (Regular · Atenção · Visão · Resposta · Sistema) é um sistema de consciência e decisão desenvolvido ao longo de anos de prática — um método que funciona antes dos outros métodos.
       </p>
-      <p class="section-body" style="color: var(--gold); opacity: 0.8; font-style: italic;">
-        "A vida não tem rascunho. Só execução."
+      <p class="section-body" style="color: var(--gold); opacity: 0.85; font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;">
+        "Você não vive o que decide. Você vive o que acontece antes de decidir."
       </p>
+      <div class="section-label" style="margin-top: 2.5rem; margin-bottom: 1rem;">O livro em 5 partes</div>
+      <div class="sobre-partes">
+        <div class="parte-item">
+          <div class="parte-num">I</div>
+          <div class="parte-title">Percepção</div>
+          <p class="parte-desc">O filtro invisível entre a realidade e sua decisão.</p>
+        </div>
+        <div class="parte-item">
+          <div class="parte-num">II</div>
+          <div class="parte-title">Programação Invisível</div>
+          <p class="parte-desc">Padrões que operam como sistema automático.</p>
+        </div>
+        <div class="parte-item">
+          <div class="parte-num">III</div>
+          <div class="parte-title">O Método AVR–S</div>
+          <p class="parte-desc">A estrutura que sustenta o que você já sabe.</p>
+        </div>
+        <div class="parte-item">
+          <div class="parte-num">IV</div>
+          <div class="parte-title">Aplicação</div>
+          <p class="parte-desc">Ver, Decidir, Executar, Evoluir.</p>
+        </div>
+        <div class="parte-item">
+          <div class="parte-num">V</div>
+          <div class="parte-title">Reprogramação</div>
+          <p class="parte-desc">Assumir o controle do que antes era automático.</p>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ECOSSISTEMA -->
+<section class="ecossistema">
+  <div class="ecossistema-inner">
+    <div class="section-label fade-in" style="justify-content: center;">O ecossistema</div>
+    <h2 class="section-title fade-in">O livro é o ponto de entrada.<br>O método é o destino.</h2>
+    <p class="section-body fade-in" style="text-align: center; max-width: 600px; margin: 0 auto 0;">
+      O AVR–S não é apenas um livro. É um ecossistema completo — livro, palestra, workshop, app e cockpit — todos conectados por uma única premissa: consciência antes da decisão.
+    </p>
+    <img src="https://raw.githubusercontent.com/audaxsilfexsil-sketch/avrs-livro/main/ECOSSISTEMA%20AVR-S.webp" alt="Ecossistema AVR–S" class="ecossistema-img fade-in" loading="lazy">
   </div>
 </section>
 
@@ -1102,12 +1227,13 @@
     </p>
     <div class="divider-or fade-in">ou</div>
     <div class="fade-in">
-      <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem;">Prefere ser avisado no lançamento oficial?</p>
+      <p style="font-size: 0.85rem; color: var(--gold2); margin-bottom: 0.4rem; font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic;">Receba o resumo exclusivo do livro — gratuito</p>
+      <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 1.2rem;">Deixe seu e-mail e receba o PDF com os conceitos centrais do método AVR–S.</p>
       <div class="lead-form">
         <input type="email" class="lead-input" id="lead-email" placeholder="Seu melhor e-mail">
-        <button class="lead-btn" onclick="submitLead()">Quero ser avisado</button>
+        <button class="lead-btn" onclick="submitLead()">Quero o resumo gratuito</button>
       </div>
-      <p class="lead-note">Sem spam. Apenas o aviso do lançamento.</p>
+      <p class="lead-note">Sem spam. Só o resumo + aviso do lançamento.</p>
     </div>
   </div>
 </section>
@@ -1228,16 +1354,26 @@
         return true;
       }
     } catch(e) {}
-    // fallback local se endpoint ainda não configurado
     formEl.innerHTML = successHTML;
     return true;
   }
 
+  function downloadResumo() {
+    const link = document.createElement('a');
+    link.href = 'https://raw.githubusercontent.com/audaxsilfexsil-sketch/avrs-livro/main/RESUMO%20DO%20LIVRO.pdf';
+    link.download = 'AVR-S_Resumo_Exclusivo.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   // Lead submit (inline form)
-  function submitLead() {
+  async function submitLead() {
     const email = document.getElementById('lead-email').value;
     const form = document.querySelector('.prelancamento .lead-form');
-    sendToFormspree(email, form, '<p style="padding: 1rem 1.5rem; color: var(--gold); font-family: Cormorant Garamond, serif; font-size: 1.1rem; font-style: italic;">✦ Cadastrado com sucesso!</p>');
+    const ok = await sendToFormspree(email, form, '<p style="padding: 1rem 1.5rem; color: var(--gold); font-family: Cormorant Garamond, serif; font-size: 1.1rem; font-style: italic;">✦ Enviando o resumo para seu e-mail...</p>');
+    if (ok) setTimeout(downloadResumo, 800);
   }
 
   // Lead submit (modal)

@@ -992,7 +992,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">A Vida Sem Rascunho</div>
-  <a href="https://pag.ae/81P9a56Kv/button" target="_blank" class="nav-cta">Garantir exemplar</a>
+  <a href="#" class="nav-cta" onclick="openIntencao(); return false;">Garantir exemplar</a>
 </nav>
 
 <!-- HERO -->
@@ -1010,7 +1010,7 @@
       Consciência antes da decisão. Um método para líderes que querem parar de reagir ao que construíram sobre a realidade — e começar a viver o que escolheram.
     </p>
     <div class="hero-actions">
-      <a href="https://pag.ae/81P9a56Kv/button" target="_blank" class="btn-primary">
+      <a href="#" class="btn-primary" onclick="openIntencao(); return false;">
         <span>Garantir meu exemplar</span>
       </a>
       <button class="btn-secondary" onclick="openModal()">
@@ -1273,7 +1273,7 @@
     <h2 class="final-title fade-in">A vida não tem rascunho.<br><em>Só execução.</em></h2>
     <p class="final-sub fade-in">Garanta seu exemplar do pré-lançamento e comece a operar com clareza antes da próxima decisão importante.</p>
     <div class="hero-actions fade-in" style="justify-content: center;">
-      <a href="https://pag.ae/81P9a56Kv/button" target="_blank" class="btn-primary">
+      <a href="#" class="btn-primary" onclick="openIntencao(); return false;">
         <span>Garantir meu exemplar agora</span>
       </a>
       <button class="btn-secondary" onclick="openModal()">
@@ -1328,6 +1328,47 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+
+  // Modal intenção de compra
+  function openIntencao() {
+    document.getElementById('modal-intencao').classList.add('active');
+  }
+  function closeIntencao() {
+    document.getElementById('modal-intencao').classList.remove('active');
+  }
+  function closeIntencaoOutside(e) {
+    if (e.target === document.getElementById('modal-intencao')) closeIntencao();
+  }
+  async function submitIntencao() {
+    const nome = document.getElementById('intencao-nome').value.trim();
+    const email = document.getElementById('intencao-email').value.trim();
+    const check = document.getElementById('intencao-check').checked;
+    if (!nome || !email || !email.includes('@') || !check) {
+      alert('Por favor, preencha nome, e-mail e confirme o interesse.');
+      return;
+    }
+    try {
+      await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ nome, email, tipo: 'Intenção de Compra — Livro AVR–S' })
+      });
+    } catch(e) {}
+    document.getElementById('intencao-form-content').style.display = 'none';
+    document.getElementById('intencao-success').style.display = 'block';
+    // Download do resumo automaticamente
+    setTimeout(() => {
+      const link = document.createElement('a');
+      link.href = 'https://raw.githubusercontent.com/audaxsilfexsil-sketch/avrs-livro/main/RESUMO%20DO%20LIVRO.pdf';
+      link.download = 'AVR-S_Resumo_Exclusivo.pdf';
+      link.target = '_blank';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }, 800);
+    setTimeout(closeIntencao, 4000);
+  }
+
   // Modal
   function openModal() {
     document.getElementById('modal').classList.add('active');
@@ -1343,7 +1384,7 @@
   // 1. Crie conta gratuita em formspree.io
   // 2. Crie um novo formulário e copie o endpoint (ex: https://formspree.io/f/xyzabcde)
   // 3. Substitua FORMSPREE_ENDPOINT abaixo pelo seu endpoint real
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/SEU_ENDPOINT_AQUI';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrevpwen';
 
   async function sendToFormspree(email, formEl, successHTML) {
     if (!email || !email.includes('@')) return false;
@@ -1392,5 +1433,32 @@
     }
   }
 </script>
+
+<!-- MODAL INTENÇÃO DE COMPRA -->
+<div class="modal-overlay" id="modal-intencao" onclick="closeIntencaoOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeIntencao()">✕</button>
+    <div id="intencao-form-content">
+      <p style="font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;">Lista de intenção de compra</p>
+      <h3 class="modal-title">Quero meu exemplar</h3>
+      <p class="modal-sub">Cadastre seu interesse e receba agora o <strong style="color: var(--gold2);">resumo exclusivo do livro</strong> — gratuito. No lançamento, você será avisado com prioridade.</p>
+      <div style="display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); margin-top: 1.5rem;">
+        <input type="text" id="intencao-nome" placeholder="Seu nome" style="background: transparent; border: none; border-bottom: 1px solid var(--border); outline: none; padding: 0.9rem 1.2rem; color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;">
+        <input type="email" id="intencao-email" placeholder="Seu melhor e-mail" style="background: transparent; border: none; outline: none; padding: 0.9rem 1.2rem; color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;">
+      </div>
+      <div style="margin-top: 1rem; display: flex; align-items: flex-start; gap: 0.7rem;">
+        <input type="checkbox" id="intencao-check" style="margin-top: 3px; accent-color: var(--gold);">
+        <label for="intencao-check" style="font-size: 0.75rem; color: var(--muted); line-height: 1.5; cursor: pointer;">Confirmo meu interesse em adquirir o livro <em>A Vida Sem Rascunho</em> e quero receber o resumo exclusivo + ser avisado com prioridade no lançamento.</label>
+      </div>
+      <button onclick="submitIntencao()" style="width: 100%; margin-top: 1.5rem; background: var(--gold); color: var(--black); border: none; padding: 1rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.3s;">Confirmar intenção de compra</button>
+      <p style="font-size: 0.68rem; color: var(--muted); margin-top: 0.8rem; text-align: center;">Sem cobrança. Você recebe o resumo imediatamente após o cadastro.</p>
+    </div>
+    <div class="modal-success" id="intencao-success" style="display:none;">
+      ✦ Resumo enviado!<br>
+      <span style="font-size: 0.9rem; color: var(--muted); font-family: 'DM Sans'; font-style: normal;">O download iniciará em instantes. Avisaremos você no lançamento.</span>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

@@ -83,7 +83,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    padding: 8rem 3rem 5rem;
+    padding: 9rem 3rem 5rem;
     overflow: hidden;
   }
 
@@ -213,12 +213,17 @@
 
   .hero-badge {
     position: absolute;
-    right: 8%;
+    right: 3%;
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
     text-align: center;
     animation: floatBadge 4s ease-in-out infinite;
+    max-width: 28%;
+  }
+  .hero-badge img {
+    width: 100%;
+    max-width: 260px;
   }
   @keyframes floatBadge {
     0%, 100% { transform: translateY(-50%) translateY(0); }
@@ -1020,7 +1025,7 @@
   </div>
 
   <div class="hero-badge">
-    <img src="https://raw.githubusercontent.com/audaxsilfexsil-sketch/avrs-livro/main/IMAGEM%20DO%20LIVRO.webp" alt="A Vida Sem Rascunho" style="width: 310px; border-radius: 4px; box-shadow: 20px 20px 50px rgba(0,0,0,0.8), 0 0 60px rgba(212,184,122,0.15); transform: rotate(2deg);">
+    <img src="https://raw.githubusercontent.com/audaxsilfexsil-sketch/avrs-livro/main/IMAGEM%20DO%20LIVRO.webp" alt="A Vida Sem Rascunho" style="width: 260px; border-radius: 4px; box-shadow: 20px 20px 50px rgba(0,0,0,0.8), 0 0 60px rgba(212,184,122,0.15); transform: rotate(2deg); margin-right: 1rem;">
   </div>
 </section>
 
